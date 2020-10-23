@@ -8,7 +8,7 @@ $(document).ready(function() {
       console.log(contractInstance);
     });
 
-alert("ff")
+
 
      $("#play_button").click(inputData)
     $("#result_button").click(spin)
@@ -20,11 +20,11 @@ alert("ff")
 });
 
   function inputData(){
-  var bet = $("#bet_amount").val();
+  var bet = parseFloat($("#bet_amount").val())*(10 ** 18);
 
   var config = {
-   value: web3.utils.toWei('4', 'ether')
-
+   value: //web3.utils.toWei('3', 'ether')
+        bet
   }
 
   contractInstance.methods.play().send(config)
@@ -46,7 +46,7 @@ alert("ff")
 
   function spin(){
   contractInstance.methods.getReward().call().then(function(res){
-    $("#result_output").text("lol");
+    $("#result_output").text(res);
     console.log(res)
 
   })
