@@ -56,7 +56,7 @@ contract CoinFlip{
             //pay player
             uint toReward = betAmount*2;
 
-            msg.sender.transfer(betAmount);
+            msg.sender.transfer(toReward);
             balance -= betAmount;
 
             emit youWin("You won ", toReward);
