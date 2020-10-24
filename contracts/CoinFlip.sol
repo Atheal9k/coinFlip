@@ -1,7 +1,8 @@
 pragma solidity 0.5.12;
+import "./Owner.sol";
 
 
-contract CoinFlip{
+contract CoinFlip is Ownable{
 
 
     uint internal balance;
@@ -82,12 +83,11 @@ contract CoinFlip{
         return reward;
     }
 
-    //send back to player function()
+    function depositFunds() public onlyOwner payable returns(uint){
+      balance += msg.value;
+      return balance;
 
-
-  /*  function getSender()public view returns(address) {
-         return player;
-    }*/
+    }
 
 
 

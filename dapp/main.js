@@ -4,7 +4,7 @@ var contractInstance;
 
 $(document).ready(function() {
     window.ethereum.enable().then(function(accounts){
-      contractInstance = new web3.eth.Contract(abi,"0x4af83DaBD38B7Bcab436b5B07EE3109365319844", {from: accounts[0]});
+      contractInstance = new web3.eth.Contract(abi,"0x49e3Bb1DdBd463E3A74Fd8FB306179f4fAf8E0d0", {from: accounts[0]});
       console.log(contractInstance);
     });
 
@@ -46,8 +46,11 @@ $(document).ready(function() {
 
   function spin(){
   contractInstance.methods.getReward().call().then(function(res){
-    $("#result_output").text(res);
+    var res = parseFloat(res)*(10 ** 18);
+
+    $("#result_output").text("You won " + res);
     console.log(res)
+
 
   })
 
