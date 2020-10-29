@@ -2,7 +2,7 @@ const CoinFlip = artifacts.require("CoinFlip");
 
 module.exports = function(deployer) {
   deployer.deploy(CoinFlip).then(function(instance){
-    instance.depositFunds({value: web3.utils.toWei("0.1", "szabo")})
+    instance.depositFunds({value: web3.utils.toWei("10", "finney")})
 
   })
 

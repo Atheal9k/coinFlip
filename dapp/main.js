@@ -27,7 +27,7 @@ $(document).ready(function() {
         bet
   }
 
-  contractInstance.methods.play().send(config)
+  contractInstance.methods.random().send(config)
   .on("transactionHash", function(hash){
     console.log(hash);
 
