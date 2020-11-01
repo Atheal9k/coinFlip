@@ -1,7 +1,8 @@
+
+
 {
   "name": "coinflip",
   "version": "1.0.0",
-  "description": "",
   "main": "truffle-config.js",
   "directories": {
     "test": "test"
@@ -22,5 +23,7 @@
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.1.1",
     "truffle-hdwallet-provider": "^1.0.17"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }

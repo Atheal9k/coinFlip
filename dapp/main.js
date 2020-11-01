@@ -4,7 +4,7 @@ var contractInstance;
 
 $(document).ready(function() {
     window.ethereum.enable().then(function(accounts){
-      contractInstance = new web3.eth.Contract(abi,"0x49e3Bb1DdBd463E3A74Fd8FB306179f4fAf8E0d0", {from: accounts[0]});
+      contractInstance = new web3.eth.Contract(abi,"0x8193c39eFd9Ba40B19e6a5A35139789a2B55f5A1", {from: accounts[0]});
       console.log(contractInstance);
     });
 
@@ -12,6 +12,7 @@ $(document).ready(function() {
 
      $("#play_button").click(inputData)
     $("#result_button").click(spin)
+    $("#initial_button").click(createPlayer)
 
 
 
@@ -20,14 +21,14 @@ $(document).ready(function() {
 });
 
   function inputData(){
-  var bet = parseFloat($("#bet_amount").val())*(10 ** 18);
+  var bet = parseFloat($("#bet_amount").val())*(10 ** 15);
 
   var config = {
    value: //web3.utils.toWei('3', 'ether')
         bet
   }
 
-  contractInstance.methods.random().send(config)
+  contractInstance.methods.placeBet().send(config)
   .on("transactionHash", function(hash){
     console.log(hash);
 
@@ -42,6 +43,10 @@ $(document).ready(function() {
 
 }
 
+function createPlayer(){
+    contractInstance.methods.createPlayer().send()
+    alert("fffff")
+}
 
 
   function spin(){
