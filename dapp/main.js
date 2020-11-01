@@ -4,7 +4,7 @@ var contractInstance;
 
 $(document).ready(function() {
     window.ethereum.enable().then(function(accounts){
-      contractInstance = new web3.eth.Contract(abi,"0x8193c39eFd9Ba40B19e6a5A35139789a2B55f5A1", {from: accounts[0]});
+      contractInstance = new web3.eth.Contract(abi,"0xd428b9FA0C3a6decd2055bf62E6Eb1257734da54", {from: accounts[0]});
       console.log(contractInstance);
     });
 

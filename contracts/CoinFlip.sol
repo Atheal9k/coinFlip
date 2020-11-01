@@ -1,5 +1,6 @@
 pragma solidity >=0.5.12 < 0.6.0;
 import "./Ownable.sol";
+import "./provableAPI.sol";
 
 contract CoinFlip is Ownable, usingProvable{
 
