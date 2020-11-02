@@ -55,7 +55,7 @@ $(document).ready(function() {
     console.log(result)
     $("#loader").hide();
     $("#result_output").show();
-    $("#result_output").text("You won 2 Finney!" + result.returnValues.theBetAmount)
+    $("#result_output").text("You won " + result.returnValues.theBetAmount)
   //  result.returnValues.theBetAmount
   })
 
