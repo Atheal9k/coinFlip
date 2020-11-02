@@ -14,13 +14,13 @@
     <script type="text/javascript" src="./main.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="./layout.css">
   </head>
   <body>
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron_jumbotron_fluid">
       <div class="container">
-        <h1 class="display-4">Coin Flip</h1>
-        <p class="lead">Double your money now! </p>
+        <h1 class="display-4">Toss me a coin, will ya?</h1>
+        <p class="lead">Arr ya ready to double your money now? </p>
       </div>
     </div>
     <div class="container">
@@ -28,17 +28,17 @@
       <div>
         <h2>Play Coin Flip</h2>
         <br>
-        <div>
-          Result: <span id="result_output"></span>
-
-        </div>
+        <div><b> Result:<br><br>
+          <img id="loader" src = "https://media.giphy.com/media/f9qwUQW56qC7BeCfCM/giphy.gif">
+          <span id="result_output"></span> <br> Potential Winnings: <br> <span id="potential_winnings"></span>
+        </b></div>
         <br>
         <form>
           <input type ="text" id="bet_amount" placeholder="Enter bet amount">
-        </form>
-        <button type="button" id="play_button" class="btn btn-primary">Play</button>
-        <button type="button" id="result_button" class="btn btn-primary">Show Results</button>
-        <button type="button" id="initial_button" class="btn btn-primary">Create Your Character</button>
+        </form> <br>
+        <button type="button" id="play_button" class="btn btn-primary">Flip The Coin</button>
+
+
 
       </div>
     </div>

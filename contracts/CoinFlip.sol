@@ -58,8 +58,8 @@ uint256 public latestNumber;
 event LogNewProvableQuery(string description);
 event generatedRandomNumber(uint256 randomNumber);
 event idCheck(string a, bytes32 q_id);
-event youWin (string, uint);
-event youLose(string, uint);
+event youWin (string, uint value);
+event youLose(string, uint value);
 
 
 
@@ -101,7 +101,7 @@ bytes32 q_id =  provable_newRandomDSQuery(
  latestNumber = randomNumber;
  emit generatedRandomNumber(randomNumber);
  saveResults(_queryId, latestNumber);
- winOrLose(_queryId);
+ 
 
 
 }
@@ -138,7 +138,7 @@ bytes32 q_id =  provable_newRandomDSQuery(
      result memory newResult;
      newResult.value = latestNumber;
      newResult.id = q_id;
-     newResult.canPlayAgain = true;
+     //newResult.canPlayAgain = true;
 
      if (latestNumber  ==1){
          newResult.isWin = true;
@@ -154,6 +154,14 @@ bytes32 q_id =  provable_newRandomDSQuery(
 
  }
 
+ //owner can withdraw contract balance
+  function withdrawContractBalance () public onlyOwner returns (uint){
+      uint toSend = balance;
+      balance = 0;
+      msg.sender.transfer(toSend);
+      return toSend;
+
+  }
 
 
 }
