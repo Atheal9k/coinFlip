@@ -4,7 +4,7 @@ var contractInstance;
 
 $(document).ready(function() {
     window.ethereum.enable().then(function(accounts){
-      contractInstance = new web3.eth.Contract(abi,"0x9c56A81522Af7f822bA6cFb82ea52C9e9a40d48E", {from: accounts[0]});
+      contractInstance = new web3.eth.Contract(abi,"0x1B87a44e0Bad77e8E36bd7C1e6dcd9D95F3D8351", {from: accounts[0]});
       console.log(contractInstance);
     //  document.body.style.backgroundImage = "https://cdn1.dotesports.com/wp-content/uploads/2020/04/23084744/Legends-of-Runeterra-Bilgewater.jpg"
     });
@@ -39,6 +39,7 @@ $(document).ready(function() {
   contractInstance.methods.placeBet(bet).send(config)
   .on("transactionHash", function(hash){
     $("#loader").show();
+    $("#result_output").hide();
     console.log(hash);
 
   })
@@ -50,15 +51,19 @@ $(document).ready(function() {
     console.log("done")
   })
   contractInstance.once("youWin", {fromBlock: 'latest', toBlock: 'latest' }, function (error, result){
+    //let valueConversion = result.returnValues.theBetAmount
     console.log(result)
     $("#loader").hide();
-    $("#result_output").text("You won " + parseFloat(result.returnValues.value)*(10 ** 15));
+    $("#result_output").show();
+    $("#result_output").text("You won 2 Finney!" + result.returnValues.theBetAmount)
+  //  result.returnValues.theBetAmount
   })
 
   contractInstance.once("youLose", {fromBlock: 'latest', toBlock: 'latest' }, function (error, result){
     console.log(result)
     $("#loader").hide();
-    $("#result_output").text("You lost :(");
+    $("#result_output").show();
+    $("#result_output").text("You lost :(" );
   })
 
 }

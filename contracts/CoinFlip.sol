@@ -58,8 +58,8 @@ uint256 public latestNumber;
 event LogNewProvableQuery(string description);
 event generatedRandomNumber(uint256 randomNumber);
 event idCheck(string a, bytes32 q_id);
-event youWin (string, uint value);
-event youLose(string, uint value);
+event youWin (string, uint theBetAmount);
+event youLose(string, uint theBetAmount);
 
 
 
@@ -101,7 +101,7 @@ bytes32 q_id =  provable_newRandomDSQuery(
  latestNumber = randomNumber;
  emit generatedRandomNumber(randomNumber);
  saveResults(_queryId, latestNumber);
- 
+
 
 
 }
@@ -109,28 +109,28 @@ bytes32 q_id =  provable_newRandomDSQuery(
      //check if player won or not. If they did, transfer winnings to them
   function winOrLose(bytes32 q_id) internal returns (uint){
      bool checkFlag = results[latestNumber].isWin;
-
+     uint toReward = bets[q_id].betAmount;
       if (checkFlag == true){
          //pay player
          address payable payPlayer = bets[q_id].punter;
-         uint toReward = bets[q_id].betAmount * 2;
+         toReward = bets[q_id].betAmount * 2;
          payPlayer.transfer(toReward);
 
          balance -= bets[q_id].betAmount;
 
-         emit youWin("You won ", bets[q_id].betAmount *2);
+         emit youWin("You won ", toReward);
          toReward  =0;
      }
 
      else {
          //keep money
          balance += bets[q_id].betAmount;
-         emit youLose("You lost ", bets[q_id].betAmount);
+         emit youLose("You lost ", toReward);
      }
 
-
+     toReward = 0;
      bets[q_id].betAmount = 0;
-
+     delete results[latestNumber];
 
   }
   //save the result of the rng to the result mapping

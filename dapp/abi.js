@@ -1,4 +1,4 @@
-var abi = [
+var abi =[
   {
     "anonymous": false,
     "inputs": [
@@ -56,7 +56,7 @@ var abi = [
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "",
+        "name": "theBetAmount",
         "type": "uint256"
       }
     ],
@@ -75,7 +75,7 @@ var abi = [
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "",
+        "name": "theBetAmount",
         "type": "uint256"
       }
     ],
